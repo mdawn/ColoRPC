@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package colors;
+option go_package="colorspb";
+
+message Coloring {
+    string adjective =1;
+    string base_color = 2;
+}
+
+message ColorRequest {
+    Coloring colors = 1;
+}
+
+message ColorResponse {
+    string result = 1;
+}
+
+
+message ColorEverywhereRequest {
+    Coloring coloring = 1;
+}
+
+message ColorEverywhereResponse {
+    string result = 1;
+}
+
+
+
+service ColorService {
+
+    // BiDi Streaming
+    rpc ColorEverywhere(stream ColorEverywhereRequest) returns (stream ColorEverywhereResponse) {};
+
+}
