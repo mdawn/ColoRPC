@@ -10,6 +10,6 @@ This RPC pushes out a stream of various shades of green. I'm making the argument
 
 **STEP 1**: Clone this repo. Cd in there. Run `go run server.go`
 
-**STEP 2**: Open another terminal and run `go run client.go`
+**STEP 2**: Open another terminal tab and run `go run client.go`
 
 **STEP 3**: Receive and enjoy greens
