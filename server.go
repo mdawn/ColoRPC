@@ -33,7 +33,7 @@ func (*server) ColorEverywhere(stream colorspb.ColorService_ColorEverywhereServe
 			return nil
 		}
 		if err != nil {
-			log.Fatalf("Error while reading color recipe: %v", err)
+			log.Fatalf("Error while reading colors: %v", err)
 			return err
 		}
 		shade := req.GetColoring().GetAdjective()
