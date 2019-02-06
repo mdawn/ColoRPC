@@ -7,7 +7,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/streamingColors/colorspb"
+	"github.com/mdawn/GREENSTREAM/colorspb"
 
 	"google.golang.org/grpc"
 )
