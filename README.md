@@ -30,7 +30,7 @@ I view the service I want:
 
 - `service ColorService`
 
-I call the RPC I want (in this case, I chose the unary):
+I call the RPC I want:
 
 - `call Color`
 
