@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/mdawn/GREENSTREAM/colorspb"
+	"github.com/mdawn/ColoRPC/colorspb"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
