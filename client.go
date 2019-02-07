@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	"../colorspb"
+	"./colorspb"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"

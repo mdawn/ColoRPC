@@ -7,7 +7,7 @@ import (
 	"log"
 	"net"
 
-	"../colorspb"
+	"./colorspb"
 	"google.golang.org/grpc/reflection"
 
 	"google.golang.org/grpc"
