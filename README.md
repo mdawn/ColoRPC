@@ -36,17 +36,15 @@ I call the RPC I want (in this case, I chose the unary):
 
 And enter my data:
 
-- colors::adjective (TYPE_STRING) => `mellow` 
+- colors::adjective (TYPE_STRING) => `mellow ` 
 - colors::base_color (TYPE_STRING) => `yellow`
 
 Your object will return like so:
 
 
 ```
-colors::adjective (TYPE_STRING) => mellow
-colors::base_color (TYPE_STRING) => yellow
 {
-  "result": "mellowyellow"`
+  "result": "mellow yellow"`
 } 
 ```
 
