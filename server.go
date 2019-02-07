@@ -8,6 +8,7 @@ import (
 	"net"
 
 	"github.com/mdawn/GREENSTREAM/colorspb"
+	"google.golang.org/grpc/reflection"
 
 	"google.golang.org/grpc"
 )
@@ -15,9 +16,9 @@ import (
 type server struct{}
 
 func (*server) Color(ctx context.Context, req *colorspb.ColorRequest) (*colorspb.ColorResponse, error) {
-	fmt.Printf("Color function was invoked with %v\n", req)
 	adjective := req.GetColors().GetAdjective()
-	result := adjective + "Blue"
+	baseColor := req.GetColors().GetBaseColor()
+	result := adjective + baseColor
 	res := &colorspb.ColorResponse{
 		Result: result,
 	}
@@ -50,7 +51,7 @@ func (*server) ColorEverywhere(stream colorspb.ColorService_ColorEverywhereServe
 }
 
 func main() {
-	fmt.Println("Sit tight! Your greens are coming.")
+	fmt.Println("Sit tight! Colors are coming.")
 
 	lis, err := net.Listen("tcp", "0.0.0.0:50051")
 	if err != nil {
@@ -59,6 +60,9 @@ func main() {
 
 	s := grpc.NewServer()
 	colorspb.RegisterColorServiceServer(s, &server{})
+
+	// Register reflection service on gRPC server
+	reflection.Register(s)
 
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)

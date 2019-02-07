@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/streamingColors/colorspb"
+	"github.com/mdawn/GREENSTREAM/colorspb"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
@@ -36,6 +36,22 @@ func main() {
 	c := colorspb.NewColorServiceClient(cc)
 
 	doStreaming(c)
+	// doUnary(c)
+}
+
+func doUnary(c colorspb.ColorServiceClient) {
+	req := &colorspb.ColorRequest{
+		Colors: &colorspb.Coloring{
+			Adjective: "Piss ",
+			BaseColor: "Yellow",
+		},
+	}
+
+	res, err := c.Color(context.Background(), req)
+	if err != nil {
+		log.Fatalf("error while calling color rpc: %v", err)
+	}
+	log.Printf("Response from color: %v", res.Result)
 
 }
 

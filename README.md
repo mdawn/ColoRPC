@@ -1,15 +1,53 @@
-# Get More Green 
+# ColoRPC 
 
-A bidirectional gRPC made using channels, routines, and protobufs (and maybe even just a touch of love!) 
+2 gRPC services utilizing channels, routines, and protobufs. Used with Evans.
 
 ## What it Does
 
-This RPC pushes out a stream of various shades of green. I'm making the argument that this RPC can bring you luck. That's certainly what I'm hoping for. Otherwise it's useless unless you _REALLY_ like green. 
+- The unary RPC takes an adjective and a color, returning the result of your dazzling descriptive input
 
-## Try it!
+- The bidirectional RPC pushes out a stream of various shades of green. I'm making the argument that this RPC can bring you luck. Otherwise it's useless unless you _REALLY_ like green. 
 
-**STEP 1**: Clone this repo. Cd in there. Run `go run server.go`
+## Simple Setup
 
-**STEP 2**: Open another terminal tab and run `go run client.go`
+**STEP 1**: Install Evans using homebrew</br>
+`brew tap ktr0731/evans`</br>
+`brew install evans`
 
-**STEP 3**: Receive and enjoy greens
+**STEP 2**: Clone this repo. Cd in there. </br> 
+Run `go run server.go`
+
+**STEP 3**: Connect the server to Evans </br>
+`evans -p 50051 -r`
+
+## Try the Unary with Evans!
+
+Once in Evans (having used `evans -p 50051 -r above`), I show available services:
+
+- `show service`
+
+I view the service I want:
+
+- `service ColorService`
+
+I call the RPC I want (in this case, I chose the unary):
+
+- `call Color`
+
+And enter my data:
+
+- colors::adjective (TYPE_STRING) => `mellow` 
+- colors::base_color (TYPE_STRING) => `yellow`
+
+Your object will return like so:
+
+
+```
+colors::adjective (TYPE_STRING) => mellow
+colors::base_color (TYPE_STRING) => yellow
+{
+  "result": "mellowyellow"`
+} 
+```
+
+(The Bidirectional works best with the client. For extra fun, run `go run client.go` in another terminal to get a stream of green.)

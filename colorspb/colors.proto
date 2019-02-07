@@ -16,7 +16,6 @@ message ColorResponse {
     string result = 1;
 }
 
-
 message ColorEverywhereRequest {
     Coloring coloring = 1;
 }
@@ -26,8 +25,9 @@ message ColorEverywhereResponse {
 }
 
 
-
 service ColorService {
+    // Unary
+    rpc Color(ColorRequest) returns (ColorResponse) {};
 
     // BiDi Streaming
     rpc ColorEverywhere(stream ColorEverywhereRequest) returns (stream ColorEverywhereResponse) {};
